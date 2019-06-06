@@ -2,9 +2,6 @@
   'includes': [ 'common-sqlite.gypi' ],
   'target_defaults': {
     'default_configuration': 'Release',
-    'cflags':[
-      '-std=c99'
-    ],
     'configurations': {
       'Debug': {
         'defines': [ 'DEBUG', '_DEBUG' ],
@@ -36,6 +33,15 @@
       ['OS == "win"', {
         'defines': [
           'WIN32'
+        ],
+      }],
+      ['OS != "zos"', {
+        'cflags': [
+          '-std=c99'
+        ],
+      }, {
+        'cflags': [
+          '-qlanglvl=stdc99'
         ],
       }]
     ],
