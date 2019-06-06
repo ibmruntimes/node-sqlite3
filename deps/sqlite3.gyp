@@ -7,7 +7,7 @@
 
   'target_defaults': {
     'default_configuration': 'Release',
-    'cflags':[
+    'cflags': [
       '-std=c99'
     ],
     'configurations': {
@@ -41,6 +41,16 @@
       ['OS == "win"', {
         'defines': [
           'WIN32'
+        ],
+      }],
+      ['OS == "zos"', {
+        'cflags!': [
+          '-std=c99'
+        ],
+        'cflags': [
+          '-qlanglvl=stdc99',
+          '-qascii',
+          '-qxclang=-fexec-charset=ISO8859-1'
         ],
       }]
     ],
